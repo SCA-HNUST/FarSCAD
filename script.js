@@ -31,11 +31,14 @@ const observer=new IntersectionObserver(entries=>{
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
 
 const themeButton=document.querySelector('[data-theme]');
-const savedTheme=localStorage.getItem('sc-theme');
+// Anonymous hosting uses an opaque-origin sandbox: storage may throw SecurityError.
+// Theme persistence is optional and must not prevent dataset controls initializing.
+let savedTheme=null;
+try{savedTheme=localStorage.getItem('sc-theme')}catch{}
 if(savedTheme==='dark'||(!savedTheme&&matchMedia('(prefers-color-scheme: dark)').matches))root.classList.add('dark');
 themeButton.addEventListener('click',()=>{
   root.classList.toggle('dark');
-  localStorage.setItem('sc-theme',root.classList.contains('dark')?'dark':'light');
+  try{localStorage.setItem('sc-theme',root.classList.contains('dark')?'dark':'light')}catch{}
 });
 
 const dialog=document.querySelector('.search-dialog');
