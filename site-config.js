@@ -2,5 +2,5 @@
 // Use only links that preserve the anonymous site's author anonymity.
 window.FARSCAD_LINKS = {
   code: "https://anonymous.4open.science/r/FarSCAD-B5C1/",
-  dataset: "https://huggingface.co/datasets/FarSCAD/FarSCAD"
+  dataset: "https://figshare.com/s/74f03d83df6b9ab95ec2"
 };
